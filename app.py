@@ -4,10 +4,9 @@ import textblob
 import os
 import google.generativeai as genai
 
-genai.configure(api_key = "AIzaSyASMX-v6vczn9mF6k8jIBlQTQKiOaoj76A")
+api=os.getenv("maskersuite")
+genai.configure(api_key = api)
 model = genai.GenerativeModel("gemini-1.5-flash")
-# api_key=os.getenv("maskersuite")
-# palm.configure(api_key=api_key)
 
 
 app = Flask(__name__)
