@@ -1,9 +1,11 @@
 from flask import Flask,request,render_template
 from flask import render_template,request
 import textblob
+import os
 
-# import os
-# api=os.getenv("maskersuite")
+# api_key=os.getenv("maskersuite")
+# palm.configure(api_key=api_key)
+
 
 app = Flask(__name__)
 
