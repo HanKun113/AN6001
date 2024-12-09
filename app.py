@@ -8,7 +8,6 @@ api=os.getenv("maskersuite")
 genai.configure(api_key = api)
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-
 app = Flask(__name__)
 
 @app.route("/",methods=["GET","POST"])
