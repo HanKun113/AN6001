@@ -1,5 +1,5 @@
 from flask import Flask,request,render_template
-from flask import render_template,request
+from transformers import pipeline
 import textblob
 import os
 import google.generativeai as genai
@@ -41,6 +41,22 @@ def genAI_result():
     q = request.form.get("q")
     r = model.generate_content(q)
     return render_template("genAI_result.html",r=r.candidates[0].content.parts[0].text)
+
+@app.route("/TB",methods=["GET","POST"])
+def TB():
+    return(render_template("TB.html"))
+
+@app.route("/TB_result", methods=["GET", "POST"])
+def TB_result():
+    q = request.form.get("q")
+    textblob_result = TextBlob(q).sentiment
+    transformers_result = classifier(q)
+    
+    return render_template(
+        "TB_result.html",
+        textblob_result=textblob_result,
+        transformers_result=transformers_result[0]
+    )
 
 if __name__ == "__main__":
     app.run()
