@@ -49,8 +49,8 @@ def TB():
 @app.route("/TB_result", methods=["GET", "POST"])
 def TB_result():
     q = request.form.get("q")
-    textblob_result = TextBlob(q).sentiment
-    transformers_result = classifier(q)
+    textblob_result = textblob.TextBlob(q).sentiment
+    transformers_result = pipeline(q)
     
     return render_template(
         "TB_result.html",
